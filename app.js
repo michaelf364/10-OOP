@@ -93,6 +93,15 @@ const managerPrompt = [
     }
 ];
 
+const rolePrompt = [
+    {
+        type: "rawlist",
+        name: "employee",
+        message: "Please select an employee role to add.",
+        choices: ["Engineer", "Intern", "no more to add"]
+    }
+];
+
 init();
 
 function init() {

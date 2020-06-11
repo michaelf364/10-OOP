@@ -12,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 
 var engineeringTeam = [];
 
+//questions for if the employee is an engineer
 const engineerPrompt = [
     {
         type: "input",
@@ -39,6 +40,7 @@ const engineerPrompt = [
     }
 ];
 
+//questions for if the employee is an intern
 const internPrompt = [
     {
         type: "input",
@@ -66,6 +68,7 @@ const internPrompt = [
     }
 ];
 
+//questions for if the employee is a manager
 const managerPrompt = [
     {
         type: "input",
@@ -93,6 +96,7 @@ const managerPrompt = [
     }
 ];
 
+//asks what type of employee someone is
 const rolePrompt = [
     {
         type: "rawlist",
@@ -104,6 +108,7 @@ const rolePrompt = [
 
 init();
 
+//first prompt will ask for manager's info
 function init() {
     inquirer.prompt(managerPrompt).then(answers => {
         var newEmployee = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
@@ -112,6 +117,7 @@ function init() {
     });
 }
 
+//prompts for information depending on what the person is
 function teamPrompts() {
     inquirer.prompt(rolePrompt).then(answers => {
         if (answers.employee === "Engineer") {
@@ -133,6 +139,7 @@ function teamPrompts() {
     });
 }
 
+//writes the information to an html file
 function writeToFile(directory, fileName, data) {
     if (!fs.existsSync(directory)) {
       fs.mkdirSync(directory);
